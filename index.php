@@ -13,11 +13,14 @@
 
 </head>
 
-<body class="bg-secondary">
-    <button ><a href="home.php">Home</a></button>
-    <button><a href="dashboard.php">Dashboard</a></button>
-    <button><a href="categories.php">Categories</a></button>
-    <button><a href="products.php">Products</a></button>
+<body style="height:100vh" class="bg-light" >
+    <div class="d-flex  h-100 justify-content-around align-items-center">
+        <a class="btn btn-lg btn-primary" href="home.php">Home</a>
+        <a class="btn btn-lg btn-primary" href="dashboard.php">Dashboard</a>
+        <a class="btn btn-lg btn-primary" href="categories.php">Categories</a>
+        <a class="btn btn-lg btn-primary" href="products.php">Products</a>
+    
+    </div>
     
 </body>
 </html>

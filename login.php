@@ -22,9 +22,9 @@
     <div class="h-100 d-flex justify-content-center align-items-center">
         <div class="bg-white p-5 shadow-lg">
             <form action="login.php" method="post" class="form-group">
-                <input type="text" name="username" class="form-control mt-2 bg-light" placeholder="User name">
+                <input type="text" name="username" class="form-control small mt-2 bg-light" placeholder="User name">
                 
-                <input type="password" name="password" class="form-control mt-2 bg-light" placeholder="Password">
+                <input type="password" name="password" class="form-control small mt-2 bg-light" placeholder="Password">
                 
                 <input type="submit" name="login" class="form-control mt-2 bg-success text-white" value="login">
                 
@@ -55,8 +55,7 @@
         $result=$conn->query($sql);
         if(mysqli_num_rows($result)>0)
         {
-            echo"Welcome";
-            
+            header("Location:home.php"); 
         }
         else{
             echo"Either Your Password is Wrong or You haven't Created Your Account";
