@@ -51,7 +51,7 @@ if(isset($_POST['submit'])){
     $quantity = $_POST['quantity'];
     $cost_price = $_POST['cost_price'];
     $sales_price = $_POST['sales_price'];
-    $sql = "UPDATE `products` SET `product_name`='$name',`quantity`='$quantity',`cost_price`='$cost_price',`sales_price`='$sales_price,`category_id`='$category_id' WHERE `product_id`='$pid'";
+    $sql = "UPDATE `products` SET `product_name`='$name',`quantity`='$quantity',`cost_price`='$cost_price',`sales_price`='$sales_price',`category_id`='$category_id' WHERE `product_id`='$pid'";
     $conn->query($sql);
 }
 ?>
