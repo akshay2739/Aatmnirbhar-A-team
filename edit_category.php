@@ -7,10 +7,10 @@ require_once('include/database.php');
 
     $id=$_GET['id'];
 
-    $sql="select * from categories where id='$id' ";
+    $sql="select * from categories where category_id='$id' ";
     $result=$conn->query($sql);
     $r=$result->fetch_assoc();
-    $name=$r['name'];
+    $name=$r['category_name'];
     echo $name;
     session_start();    
     if(!isset($_SESSION['id'])){
@@ -37,7 +37,7 @@ require_once('include/database.php');
     
 
         $name=$_POST['name'];
-        $sql="update categories set name='$name' where id='$id' ";
+        $sql="update categories set category_name='$name' where category_id='$id' ";
         $result=$conn->query($sql);
         header('location: categories.php');
         
