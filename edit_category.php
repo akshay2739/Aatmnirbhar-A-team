@@ -2,46 +2,42 @@
 
 require_once('include/database.php');
 include('include/sessionCheck.php');
-
+include('include/bootstrap.php');
+$id = $_GET['id'];
 ?>
 <?php
-
-    $id=$_GET['id'];
-
-    $sql="select * from categories where category_id='$id' ";
+if(!isset($_POST['update'])){
+    $sql="select * from categories where category_id='$id'";
     $result=$conn->query($sql);
     $r=$result->fetch_assoc();
-    $name=$r['category_name'];
-    echo $name;
-    session_start();    
-    if(!isset($_SESSION['id'])){
-        $_SESSION['id']=$id;
-    }
-    else{
-        $id=$_SESSION['id'];
-    }
-   
-
+}
 ?>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Category</title>
+</head>
+<body>
+    <?php include('sideNav.html'); ?>
+    <h2>Update</h2>
+    <form action="<?php $_SERVER['PHP_SELF']?>" method="POST" >
+        <input type="text" name="name" value="<?php echo $r['category_name'] ?>" >
+        <input type="submit" value="Update" name="update"> 
+    </form>
+</body>
+</html>
+
 <!-- *******HTML FOR INPUT FIELD IN UPDATE********* -->
-<h2>Update</h2>
-<form action="edit_category.php" method="POST" >
-    <input type="text" name="name" value=<?php echo $name ?> >
-    <input type="submit" value="Update" name="update"> 
-</form>
 
 <?php
-
-    if(isset($_POST['update'])){
-
-    
-
-        $name=$_POST['name'];
-        $sql="update categories set category_name='$name' where category_id='$id' ";
-        $result=$conn->query($sql);
-        header('location: categories.php');
-        
-    }
-
+if(isset($_POST['update'])){
+    $name=$_POST['name'];
+    $sql="update categories set category_name='$name' where category_id='$id' ";
+    echo $sql;
+    $result=$conn->query($sql);
+    header('location: categories.php');
+}
 ?>

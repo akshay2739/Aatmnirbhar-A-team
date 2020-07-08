@@ -1,5 +1,4 @@
 <?php
-
 require_once('include/database.php');
 require_once('include/bootstrap.php');
 include('include/sessionCheck.php');
@@ -21,48 +20,29 @@ $res = $conn -> query($sql);
 </head>
 <body>
     <?php include('sideNav.html'); ?>    
-    <form action="<?php $_SERVER['PHP_SELF']?>" method="POST">
+    
+    <form action="include/addCategorie.inc.php" method="POST">
         <input type="text" name="categorie">
         <input type="submit" name="add" value="Add Categorie">
     </form>
 
-<!-- ******************HTML FOR INPUT FIELD*********************** -->
-
-
-
-<!-- HTML FOR DISPLAY CATEGORIES -->
-
-<table>
-    <tr>
-        <th>Category ID</th>
-        <th>Category Name</th>    
-        <th>Actions</th>
-    </tr>
-<?php while(($r = $res->fetch_assoc())){ ?>
+    <table>
         <tr>
-            <td><?php echo $r['category_id'] ?></td>
-            <td><?php echo $r['category_name']?></td>
-            <td> <a href='edit_category.php ? id=<?php echo $r['category_id']; ?>'> Edit </a>
-            <a href='delete_category.php ? id=<?php echo $r['category_id']; ?>'> Delete </a>
-            <td> <a href='manageProducts.php?id=<?php echo $r['category_id']; ?>'> View Products </a></td>
+            <th>Category ID</th>
+            <th>Category Name</th>    
+            <th>Actions</th>
         </tr>
-<?php } ?> 
-</table>
+        <?php while(($r = $res->fetch_assoc())){ ?>
+            <tr>
+                <td><?php echo $r['category_id'] ?></td>
+                <td><?php echo $r['category_name']?></td>
+                <td> <a href='edit_category.php?id=<?php echo $r['category_id']; ?>'> Edit </a>
+                <a href='delete_category.php?id=<?php echo $r['category_id']; ?>'> Delete </a>
+                <td> <a href='manageProducts.php?id=<?php echo $r['category_id']; ?>'> View Products </a></td>
+            </tr>
+        <?php } ?> 
+    </table>
 </body>
 </html>
-
-<!-- PHP FOR INSERT CATEGOIE IN DATABASE -->
-
-<?php
-
-if(isset($_POST['add'])){
-    $categorie=$_POST['categorie'];
-    $sql="insert into categories (category_name) values('$categorie')";
-    $result=$conn->query($sql);
-    header('location:categories.php');   
-}
-
-?>
-
 
 
