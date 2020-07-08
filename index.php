@@ -18,7 +18,9 @@
         <a class="btn btn-lg btn-primary" href="home.php">Home</a>
         <a class="btn btn-lg btn-primary" href="dashboard.php">Dashboard</a>
         <a class="btn btn-lg btn-primary" href="categories.php">Categories</a>
-        <a class="btn btn-lg btn-primary" href="products.php">Products</a>
+        <a class="btn btn-lg btn-primary" href="addProduct.php">add  Products</a>
+        <a class="btn btn-lg btn-primary" href="addSales.php">add Sales</a>
+        
     
     </div>
     
