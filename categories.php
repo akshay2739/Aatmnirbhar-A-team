@@ -11,9 +11,9 @@ if(isset($_SESSION['id'])){
 
 <!-- ******************HTML FOR INPUT FIELD*********************** -->
 
-<form action="#" method="POST">
-   <input type="text" name="category">
-   <input type="submit" name="add" value="Add Category">
+<form action="categories.php" method="POST">
+   <input type="text" name="categorie">
+   <input type="submit" name="add" value="Add Categorie">
 </form>
 
 <!-- HTML FOR DISPLAY CATEGORIES -->
@@ -22,22 +22,22 @@ if(isset($_SESSION['id'])){
 <?php
     $index=1;
 
-    $sql="select * from categories order by id";
+    $sql="select * from categories order by category_id";
     $result=$conn->query($sql);
-    while($r=$result->fetch_assoc())
+    while(($r = $result->fetch_assoc()) != null)
     {
 ?>
         <tr>
             <td><?php echo $index;$index++; ?></td>
-            <td><?php echo $r['name']?></td>
-            <td> <a href='edit_category.php ? id=<?php echo $r['id']; ?>'> Edit </a>
-            <td> <a href='delete_category.php ? id=<?php echo $r['id']; ?>'> Delete </a>
+            <td><?php echo $r['category_name']?></td>
+            <td> <a href='edit_categorie.php ? id=<?php echo $r['id']; ?>'> Edit </a>
+            <td> <a href='delete_categorie.php ? id=<?php echo $r['id']; ?>'> Delete </a>
         
         </tr>
         
 <?php
     }
-    $id=$r['id'];
+    $id=$r['category_id'];
 
 ?>
 </table>
@@ -47,8 +47,8 @@ if(isset($_SESSION['id'])){
 <?php
 
 if(isset($_POST['add'])){
-    $category=$_POST['category'];
-    $sql="insert into categories (name) values('$category')";
+    $categorie=$_POST['categorie'];
+    $sql="insert into categories (category_name) values('$categorie')";
     $result=$conn->query($sql);
     header('location:categories.php');
     
