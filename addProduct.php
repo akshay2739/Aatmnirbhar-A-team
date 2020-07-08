@@ -1,15 +1,17 @@
 <?php
 require('include/database.php');
 include('include/sessionCheck.php');
+include('include/bootstrap.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Add product</title>
 </head>
 <body>
+    <?php include('sideNav.html'); ?>
     <form action="<?php $_SERVER['PHP_SELF']?>" method="post">
         <label for="name">Name</label>
         <input type="text" name="name" required id="name"> <br>
