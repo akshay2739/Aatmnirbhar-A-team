@@ -58,11 +58,10 @@
         {
             session_start();
             $_SESSION['user']=$username;
-            header("location: home.php"); 
+            header("location: index.php"); 
         }
         else{
-            echo"Either Your Password is Wrong or You haven't Created Your Account";
-             
+            echo"Either Your Password is Wrong or You haven't Created Your Account";     
         }
     }
 
