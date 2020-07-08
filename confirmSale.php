@@ -8,7 +8,6 @@
 <body>
 
 <?php
-    session_start();
     require('include/database.php');
     include('include/sessionCheck.php');
     if(isset($_POST["confirm"])){
