@@ -1,5 +1,4 @@
 <?php
-session_start();
 require('include/database.php');
 include('include/sessionCheck.php');
 $res =$conn->query("SELECT * FROM `products` INNER JOIN `categories` ON products.category_id=categories.category_id ORDER BY product_name");
