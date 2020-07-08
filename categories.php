@@ -30,8 +30,13 @@ if(isset($_SESSION['id'])){
         <tr>
             <td><?php echo $index;$index++; ?></td>
             <td><?php echo $r['category_name']?></td>
+
             <td> <a href='edit_category.php ? id=<?php echo $r['category_id']; ?>'> Edit </a>
             <td> <a href='delete_category.php ? id=<?php echo $r['category_id']; ?>'> Delete </a>
+=======
+            <td> <a href='edit_category.php ? id=<?php echo $r['id']; ?>'> Edit </a>
+            <td> <a href='delete_category.php ? id=<?php echo $r['id']; ?>'> Delete </a>
+
         
         </tr>
         
