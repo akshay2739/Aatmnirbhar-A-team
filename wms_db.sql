@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 07, 2020 at 06:55 PM
+-- Generation Time: Jul 08, 2020 at 08:54 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `warehouse-management`
+-- Database: `wms_db`
 --
 
 -- --------------------------------------------------------
@@ -31,13 +31,6 @@ CREATE TABLE `categories` (
   `category_id` int(11) NOT NULL,
   `category_name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `categories`
---
-
-INSERT INTO `categories` (`category_id`, `category_name`) VALUES
-(1, 'category 1');
 
 -- --------------------------------------------------------
 
@@ -65,18 +58,9 @@ CREATE TABLE `products` (
   `quantity` varchar(100) NOT NULL,
   `cost_price` varchar(100) NOT NULL,
   `sales_price` varchar(100) NOT NULL,
-  `category_id` varchar(100) NOT NULL,
-  `created_at` datetime DEFAULT current_timestamp()
+  `created_at` datetime DEFAULT current_timestamp(),
+  `category_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `products`
---
-
-INSERT INTO `products` (`product_id`, `product_name`, `quantity`, `cost_price`, `sales_price`, `category_id`, `created_at`) VALUES
-(11, '11', '1', '12', '1', '1', '2020-07-07 15:35:29'),
-(12, 'parv', '12', '12', '13', '1', '2020-07-07 22:09:44'),
-(13, 'parv', '12', '12', '13', '1', '2020-07-07 22:10:05');
 
 -- --------------------------------------------------------
 
@@ -126,7 +110,9 @@ ALTER TABLE `ordered_products`
 -- Indexes for table `products`
 --
 ALTER TABLE `products`
-  ADD PRIMARY KEY (`product_id`);
+  ADD PRIMARY KEY (`product_id`),
+  ADD UNIQUE KEY `product_id` (`product_id`),
+  ADD KEY `FK_category_id` (`category_id`);
 
 --
 -- Indexes for table `sales`
@@ -136,20 +122,48 @@ ALTER TABLE `sales`
   ADD KEY `product_id` (`product_id`);
 
 --
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `products`
+--
+ALTER TABLE `products`
+  ADD CONSTRAINT `FK_category_id` FOREIGN KEY (`category_id`) REFERENCES `categories` (`category_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
