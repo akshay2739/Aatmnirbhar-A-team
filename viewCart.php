@@ -1,4 +1,5 @@
 <?php
+include('include/sessionCheck.php');
     session_start();
     $total_amount=0;
     if(!isset($_SESSION["cart"])):

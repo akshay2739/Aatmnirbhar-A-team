@@ -1,6 +1,7 @@
 <?php
 $pid = $_GET['id'];
 require('include/database.php');
+include('include/sessionCheck.php');
 $res =$conn->query("SELECT * FROM `products` WHERE `product_id`='$pid'");
 $row = $res->fetch_assoc();
 

@@ -1,5 +1,6 @@
 <?php
 require('include/database.php');
+include('include/sessionCheck.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">

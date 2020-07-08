@@ -1,6 +1,7 @@
 <?php
 
 require_once('include/database.php');
+include('include/sessionCheck.php');
 
 ?>
 <?php
