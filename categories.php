@@ -3,10 +3,11 @@
 require_once('include/database.php');
 require_once('include/bootstrap.php');
 include('include/sessionCheck.php');
-session_start();
 if(isset($_SESSION['id'])){
     unset($_SESSION['id']);
 }
+$sql = "SELECT * FROM `categories` ORDER BY `category_id`";
+$res = $conn -> query($sql);
 
 ?>
 
@@ -20,13 +21,10 @@ if(isset($_SESSION['id'])){
 </head>
 <body>
     <?php include('sideNav.html'); ?>    
-    <form action="categories.php" method="POST">
+    <form action="<?php $_SERVER['PHP_SELF']?>" method="POST">
         <input type="text" name="categorie">
         <input type="submit" name="add" value="Add Categorie">
     </form>
-</form>
-</body>
-</html>
 
 <!-- ******************HTML FOR INPUT FIELD*********************** -->
 
@@ -35,30 +33,23 @@ if(isset($_SESSION['id'])){
 <!-- HTML FOR DISPLAY CATEGORIES -->
 
 <table>
-<?php
-    $index=1;
-
-    $sql="select * from categories order by category_id";
-    $result=$conn->query($sql);
-    while(($r = $result->fetch_assoc()) != null)
-    {
-?>
+    <tr>
+        <th>Category ID</th>
+        <th>Category Name</th>    
+        <th>Actions</th>
+    </tr>
+<?php while(($r = $res->fetch_assoc())){ ?>
         <tr>
-            <td><?php echo $index;$index++; ?></td>
+            <td><?php echo $r['category_id'] ?></td>
             <td><?php echo $r['category_name']?></td>
             <td> <a href='edit_category.php ? id=<?php echo $r['category_id']; ?>'> Edit </a>
-            <td> <a href='delete_category.php ? id=<?php echo $r['category_id']; ?>'> Delete </a>
-
-
-        
+            <a href='delete_category.php ? id=<?php echo $r['category_id']; ?>'> Delete </a>
+            <td> <a href='manageProducts.php?id=<?php echo $r['category_id']; ?>'> View Products </a></td>
         </tr>
-        
-<?php
-    }
-    $id=$r['category_id'];
-
-?>
+<?php } ?> 
 </table>
+</body>
+</html>
 
 <!-- PHP FOR INSERT CATEGOIE IN DATABASE -->
 
@@ -68,8 +59,7 @@ if(isset($_POST['add'])){
     $categorie=$_POST['categorie'];
     $sql="insert into categories (category_name) values('$categorie')";
     $result=$conn->query($sql);
-    header('location:categories.php');
-    
+    header('location:categories.php');   
 }
 
 ?>
