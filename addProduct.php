@@ -1,5 +1,5 @@
 <?php
-require('includes/connection.php');
+require('include/database.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">

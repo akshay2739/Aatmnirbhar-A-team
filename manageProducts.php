@@ -1,6 +1,6 @@
 <?php
 
-require('includes/connection.php');
+require('include/database.php');
 $res =$conn->query("SELECT * FROM `products` INNER JOIN `categories` ON products.category_id=categories.category_id");
 ?>
 
