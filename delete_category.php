@@ -5,8 +5,8 @@ require_once('include/database.php');
 <?php
 
     $id=$_GET['id'];
-    $sql="delete from categories where id='$id'";
+    $sql="delete from categories where category_id='$id'";
     $result=$conn->query($sql);
-    echo 'deleted';
+    header('location: categories.php');
 
 ?>
