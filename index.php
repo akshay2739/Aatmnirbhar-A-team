@@ -16,6 +16,7 @@
             <a href="categories.php">Categories</a>
             <a href="addProduct.php">Products</a>
             <a href="addSales.php">Sales</a>
+            <p>Hello</p>
         </div>
 
         <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
