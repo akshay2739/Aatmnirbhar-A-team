@@ -14,5 +14,5 @@
     }
     //echo $sql;
     $conn->query($sql);
-    // header('Location: ../manageProducts.php');
+    header('Location: ../manageProducts.php');
 ?>
