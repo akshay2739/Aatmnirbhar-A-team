@@ -5,6 +5,18 @@
 
 ?>
 
+
+<?php
+   
+
+    if(isset($_SESSION['id'])){
+        echo '<script>alert("Status Updated");</script>';
+
+        unset($_SESSION['id']);
+    }
+
+?>
+
 <!-- HTML FOR DISPLAY OF SALES -->
 <!DOCTYPE html>
 <html lang="en">
@@ -21,10 +33,12 @@
             <th>No.</th>
             <th>TOTAL</th>
             <th>Date</th>
+            <th>Status</th>
+            <th>Update Status</th>
         </tr>
         <?php
             $index=0;
-            $sql1="select * from sales order by date";
+            $sql1="select * from sales order by id desc";
             $result1=$conn->query($sql1);
             while($r=$result1->fetch_assoc()){
                 $index=$index+1;
@@ -33,7 +47,8 @@
                     <td><?php echo $index; ?></td>
                     <td><?php echo $r['price']; ?></td>
                     <td><?php echo $r['date']; ?></td>
-                    <td><a href='show_order.php ? id=<?php echo $r['id']; ?>'>Select </a></td>
+                    <td><?php echo $r['status']; ?></td>
+                    <td><button><a href='update_status.php ? id=<?php echo $r['id']; ?>'>change </a></button></td>
 
                 </tr>
             
