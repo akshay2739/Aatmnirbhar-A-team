@@ -15,18 +15,22 @@ include('include/bootstrap.php');
     <form action="runQuery.php" method="post">
         <label for="showOrders">Show orders from:</label>
         <select name="orderTime" id="orderTime">
-            <option val="all">Today</option>
-            <option val="all">Yesterday</option>
-            <option val="all">This Week</option>
-            <option val="all">This Month</option>
-            <option val="all">This Year</option>
+            <option val="today">Today</option>
+            <option val="yesterday">Yesterday</option>
+            <option val="week">This Week</option>
+            <option val="month">This Month</option>
+            <option val="year">This Year</option>
             <option val="all">All Time</option>
         </select><br>
         <label for="category">Category Name</label>
         <input type="text" name="category" id="category" placeholder="Category">
         <br>
         <label for="product">Product Name</label>
-        <input type="text" name="product" id="product" pl>
+        <input type="text" name="product" id="product" placeholder="Product">
+        <br>
     </form>
+    <table>
+        <!-- table display here -->
+    </table>
 </body>
 </html>
