@@ -18,17 +18,10 @@ if(isset($_SESSION['id'])){
     <title>Document</title>
 </head>
 <body>
-    <div id="mySidenav" class="sidenav">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="index.php">Dashboard</a>
-        <a href="categories.php">Categories</a>
-        <a href="addProduct.php">Products</a>
-        <a href="addSales.php">Sales</a>
-    </div>
-    <div id="main">
-        <h2>Sidenav Push Example</h2>
-        <p>Click on the element below to open the side navigation menu, and push this content to the right.</p>
-        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+    <div>
+        <?php 
+            include_once('include/sidebar.php')
+        ?>
     </div>
     <form action="categories.php" method="POST">
         <input type="text" name="categorie">

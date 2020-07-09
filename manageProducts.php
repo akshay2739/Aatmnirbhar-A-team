@@ -12,6 +12,13 @@ $res =$conn->query("SELECT * FROM `products` INNER JOIN `categories` ON products
     <title>Manage Products</title>
 </head>
 <body>
+
+    <div>
+        <?php 
+            include_once('include/sidebar.php')
+        ?>
+    </div>
+
     <a href="addProduct.php">Add Product</a>
     <table>
         <tr>

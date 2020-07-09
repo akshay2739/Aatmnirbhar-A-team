@@ -9,6 +9,12 @@ require('include/database.php');
     <title>Document</title>
 </head>
 <body>
+
+    <div>
+        <?php 
+            include_once('include/sidebar.php')
+        ?>
+    </div>
     <form action="<?php $_SERVER['PHP_SELF']?>" method="post">
         <label for="name">Name</label>
         <input type="text" name="name" required id="name"> <br>
