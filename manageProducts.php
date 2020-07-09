@@ -20,8 +20,7 @@ $res =$conn->query($sql);
 </head>
 <body>
 
-    <?php include_once('include/sideNav.html'); ?>
-
+    <?php include_once('include/header.php') ?>
     <a href="addProduct.php">Add Product</a>
     <table>
         <tr>
