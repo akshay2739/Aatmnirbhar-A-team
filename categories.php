@@ -19,18 +19,8 @@ $res = $conn -> query($sql);
     <title>Document</title>
 </head>
 <body>
-<<<<<<< HEAD
-    <div>
-        <?php 
-            include_once('include/sidebar.php')
-        ?>
-    </div>
+    <?php include_once('include/sideNav.html') ?>
     <form action="categories.php" method="POST">
-=======
-    <?php include('sideNav.html'); ?>    
-    
-    <form action="include/addCategorie.inc.php" method="POST">
->>>>>>> 035dff8ae980618a998e20a8e143daf5ed0849e6
         <input type="text" name="categorie">
         <input type="submit" name="add" value="Add Categorie">
     </form>

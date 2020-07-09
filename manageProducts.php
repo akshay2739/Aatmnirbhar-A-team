@@ -19,11 +19,7 @@ $res =$conn->query($sql);
 </head>
 <body>
 
-    <div>
-        <?php 
-            include_once('include/sidebar.php')
-        ?>
-    </div>
+    <?php include_once('include/sideNav.html'); ?>
 
     <a href="addProduct.php">Add Product</a>
     <table>
