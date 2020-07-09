@@ -44,7 +44,7 @@ $res = $conn -> query($sql);
                     </div>
                     <div class="card-body">
                         <div class="table-responsive-sm">
-                            <table class="table table-sm table-bordered">
+                            <table class="table text-center table-sm table-bordered">
                                 <tr>
                                     <th>ID</th>
                                     <th>Name</th>    
