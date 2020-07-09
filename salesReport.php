@@ -12,40 +12,53 @@ include('include/bootstrap.php');
 </head>
 <body>
     <?php include_once('include/header.php'); ?>
-    <form action="" method="post">
-        
-    <label for="product">Product Name</label>
-        <input type="text" name="product" id="product" placeholder="Product" onkeyup="getReport()">
-        <br>
-        <input type="radio" name="times" id="recent" value="fixed" onchange="change(this.value)" checked>Recent
-        <input type="radio" name="times" id="custom" value="custom" onchange="change(this.value)">Custom
-        <div id="fixed">
-        <label for="showOrders">Show orders from:</label>
-        <select name="orderTime" id="orderTime" onchange="getReport(this.value)">
-            <option selected disabled>Select</option>
-            <option val="today">Today</option>
-            <option val="yesterday">Yesterday</option>
-            <option val="week">This Week</option>
-            <option val="month">This Month</option>
-            <option val="year">This Year</option>
-            <option val="all">All Time</option>
-        </select>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header text-center text-uppercase">
+                        <h1>Sales Report</h1>
+                    </div>
+                
+                    <div class="card-body">
+                        <form action="" method="post"> 
+                            <!-- <label for="product">Product Name</label> -->
+                            <input type="text" name="product" id="product" placeholder="Product Name" class="form-control" onkeyup="getReport()">
+                            <div class="radio-container form-control mt-4">
+                                <input class="py-4 mx-2" type="radio" name="times" id="recent" value="fixed" onchange="change(this.value)" checked>Recent
+                                <input class="py-4 mx-2" type="radio" name="times" id="custom" value="custom" onchange="change(this.value)">Custom
+                            </div>
+                            <div id="fixed" class="py-4">
+                                
+                                <select class="form-control" name="orderTime" id="orderTime" onchange="getReport(this.value)">
+                                    <option selected disabled>Select</option>
+                                    <option val="today">Today</option>
+                                    <option val="yesterday">Yesterday</option>
+                                    <option val="week">This Week</option>
+                                    <option val="month">This Month</option>
+                                    <option val="year">This Year</option>
+                                    <option val="all">All Time</option>
+                                </select>
+                            </div>
+                            <div id="customs" style="display:none" class="py-4 mx-auto">
+                                From: <input type="date" id="from" class="form-control" onchange="openNext()"> 
+                                To: <input type="date" id="to" class="form-control" onchange="getReport()">
+                            </div>
+                            <!-- <label for="category">Category Name</label> -->
+                            <input class="form-control" type="text" name="category" id="category" placeholder="Category" onkeyup="getReport()"><br>
+                            <!-- <label for="status">Status:</label> -->
+                            <select class="form-control" name="status" id="status" onchange="getReport(this.value)">
+                                <option selected disabled>Select</option>
+                                <option val="COMPLETED">COMPLETED</option>
+                                <option val="PENDING">PENDING</option>
+                            </select>
+                            <input type="reset" value="RESET FILTERS" class="form-control btn btn-primary mt-4">
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div id="customs" style="display:none">
-            From: <input type="date" id="from" onchange="openNext()"> To: <input type="date" id="to" onchange="getReport()">
-        </div>
-        <label for="category">Category Name</label>
-        <input type="text" name="category" id="category" placeholder="Category" onkeyup="getReport()"><br>
-        <label for="status">Status:</label>
-        <select name="status" id="status" onchange="getReport(this.value)">
-            <option selected disabled>Select</option>
-            <option val="COMPLETED">COMPLETED</option>
-            <option val="PENDING">PENDING</option>
-        </select><br>
-        <br>
-        <br>
-        <input type="reset" value="Reset Filters">
-    </form>
+    </div>
     <div id="content"></div>
     <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
     <script>
