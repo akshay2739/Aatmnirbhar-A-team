@@ -16,25 +16,43 @@
         }
         $qry="";
         if($filter=="Today"){
-            $qry = "SELECT * FROM sales WHERE DATE(date) = DATE(NOW())".$pname.$pcat.$status." ORDER BY `date` DESC";
+            $qry = "SELECT * FROM sales WHERE DATE(date) = DATE(NOW())".$pname.$pcat.$status." ORDER BY `date` ";
         }
         else if($filter=="Yesterday"){
-            $qry = "SELECT * FROM sales WHERE DATE(date) = DATE(NOW())-1".$pname.$pcat.$status." ORDER BY `date` DESC";
+            $qry = "SELECT * FROM sales WHERE DATE(date) = DATE(NOW())-1".$pname.$pcat.$status." ORDER BY `date` ";
         }
         else if($filter=="This Week"){
-            $qry="SELECT * FROM sales WHERE YEARWEEK(date) = YEARWEEK(NOW())".$pname.$pcat.$status." ORDER BY `date` DESC";
+            $qry="SELECT * FROM sales WHERE YEARWEEK(date) = YEARWEEK(NOW())".$pname.$pcat.$status." ORDER BY `date` ";
         }
         else if($filter=="This Month"){
-            $qry="SELECT * FROM sales WHERE MONTH(date) = MONTH(NOW())".$pname.$pcat.$status." ORDER BY `date` DESC";
+            $qry="SELECT * FROM sales WHERE MONTH(date) = MONTH(NOW())".$pname.$pcat.$status." ORDER BY `date` ";
         }
         else if($filter=="This Year"){
-            $qry="SELECT * FROM sales WHERE YEAR(date) = YEAR(NOW())".$pname.$pcat.$status." ORDER BY `date` DESC";
+            $qry="SELECT * FROM sales WHERE YEAR(date) = YEAR(NOW())".$pname.$pcat.$status." ORDER BY `date` ";
         }
         else{
             $pname=" WHERE p_name like '%".$_GET["name"]."%'";
-            $qry = "SELECT * FROM sales".$pname.$pcat.$status." ORDER BY `date` DESC";
+            $qry = "SELECT * FROM sales".$pname.$pcat.$status." ORDER BY `date`";
         }
-        $res=$conn->query($qry);
+    }
+    else{
+        $from=$_GET['from'];
+        $to=$_GET['to'];
+        $pname="";
+        $pcat="";
+        $status="";
+        if(isset($_GET["name"]) && strlen(isset($_GET["name"]))>0){
+            $pname=" AND p_name like '%".$_GET["name"]."%'";
+        }
+        if(isset($_GET["cat"]) && strlen(isset($_GET["cat"]))>0){
+            $pcat=" AND p_category like '%".$_GET["cat"]."%'";
+        }
+        if(isset($_GET["status"]) && strlen(isset($_GET["status"]))>0){
+            $status=" AND status like '%".$_GET["status"]."%'";
+        }
+        $qry="SELECT * FROM sales WHERE (date BETWEEN '$from' AND '$to')".$pname.$pcat.$status." ORDER BY `date`";
+    }
+    $res=$conn->query($qry);
         $total=0.0;
         if($res){
             if(mysqli_num_rows($res)>0){
@@ -72,5 +90,4 @@
             echo "No Data Found";
         }
 
-    }
 ?>
