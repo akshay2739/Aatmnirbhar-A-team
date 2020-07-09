@@ -21,7 +21,7 @@ if(!isset($_POST['update'])){
     <title>Edit Category</title>
 </head>
 <body>
-    <?php include('sideNav.html'); ?>
+    <?php include('include/header.php'); ?>
     <h2>Update</h2>
     <form action="<?php $_SERVER['PHP_SELF']?>" method="POST" >
         <input type="text" name="name" value="<?php echo $r['category_name'] ?>" >
