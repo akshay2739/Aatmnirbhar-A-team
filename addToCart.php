@@ -1,6 +1,7 @@
 <?php
     require('include/database.php');
     include('include/sessionCheck.php');
+    session_start();
     if(isset($_GET["add"])){
         $id = $_GET["id"];
         $quantity=$_GET["quantity"];
