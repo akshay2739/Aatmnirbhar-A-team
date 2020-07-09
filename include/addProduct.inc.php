@@ -6,7 +6,7 @@
     $cost_price = $_POST['cost_price'];
     $category = $_POST['category'];
     $sales_price = $_POST['sales_price'];
-
+    $sql="";
     if(isset($_POST['add'])){
         $sql = "INSERT INTO `products`(`product_name`, `quantity`, `cost_price`, `sales_price`, `category_id`) VALUES ('$name','$quantity','$cost_price','$sales_price','$category')";
     }elseif(isset($_POST['edit'])){
