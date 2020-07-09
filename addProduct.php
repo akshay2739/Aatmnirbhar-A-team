@@ -13,10 +13,6 @@ include('include/bootstrap.php');
 <body>
     <?php include_once('include/header.php') ?>
     <form action="include/addProduct.inc.php" method="post">
-        <label for="name">Name</label>
-        <input type="text" name="name" required id="name"> <br>
-
-    <form action="<?php $_SERVER['PHP_SELF']?>" method="post">
         <div class="container">
             <div class="row p-2">
                 <input type="text" name="name" required id="name" class="form-control col-lg-12 mt-2 col-sm-12" placeholder="Product name">
@@ -32,7 +28,7 @@ include('include/bootstrap.php');
                     }
                 ?></select> 
 
-                <input type="text" required name="cost_price" id="cost_price" placeholder="Price" class="form-control mt-2 col-lg-6 col-sm-12">
+                <input type="text" required name="cost_price" id="cost_price" placeholder="Buying Price" class="form-control mt-2 col-lg-6 col-sm-12">
 
                 <input type="text" required name="sales_price" id="sales_price" placeholder="Selling Price" class="form-control mt-2 col-lg-6 col-sm-12">
 
