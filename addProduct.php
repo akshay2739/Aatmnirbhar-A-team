@@ -36,7 +36,7 @@ include('include/bootstrap.php');
 
                                 <input type="text" required name="sales_price" id="sales_price" placeholder="Selling Price" class="form-control mt-2 col-12">
 
-                                <input type="submit" value="Add" name="submit" class="form-control mt-2 mx-auto text-white bg-primary text-uppercase">
+                                <input type="submit" value="Add" name="add" class="form-control mt-2 mx-auto text-white bg-primary text-uppercase">
                             </form>
                         </div>
                     </div>
