@@ -51,6 +51,8 @@ include('include/bootstrap.php');
                                 <option selected disabled>Select</option>
                                 <option val="COMPLETED">COMPLETED</option>
                                 <option val="PENDING">PENDING</option>
+                                <option val="PACKED">PACKED</option>
+                                <option val="SHIPPED">SHIPPED</option>
                             </select>
                             <input type="reset" value="RESET FILTERS" class="form-control btn btn-primary mt-4">
                         </form>
@@ -59,6 +61,8 @@ include('include/bootstrap.php');
             </div>
         </div>
     </div>
+        
+    </form>
     <div id="content"></div>
     <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
     <script>
