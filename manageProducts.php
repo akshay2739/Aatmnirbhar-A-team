@@ -2,6 +2,7 @@
 require('include/sessionCheck.php');
 require('include/database.php');
 include('include/sessionCheck.php');
+include('include/bootstrap.php');
 if(isset($_GET['id'])){
     $sql = "SELECT * FROM `products` INNER JOIN `categories` ON products.category_id=categories.category_id WHERE products.category_id='".$_GET['id']."'";
 }else{

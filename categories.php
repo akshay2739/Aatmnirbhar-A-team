@@ -20,7 +20,7 @@ $res = $conn -> query($sql);
 </head>
 <body>
     <?php include_once('include/sideNav.html') ?>
-    <form action="categories.php" method="POST">
+    <form action="include/addCategorie.inc.php" method="POST">
         <input type="text" name="categorie">
         <input type="submit" name="add" value="Add Categorie">
     </form>
