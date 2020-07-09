@@ -41,6 +41,8 @@ include('include/bootstrap.php');
             <option selected disabled>Select</option>
             <option val="COMPLETED">COMPLETED</option>
             <option val="PENDING">PENDING</option>
+            <option val="PACKED">PACKED</option>
+            <option val="SHIPPED">SHIPPED</option>
         </select><br>
         <br>
         <br>

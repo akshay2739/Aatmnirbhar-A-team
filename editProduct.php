@@ -54,7 +54,7 @@ $row = $res->fetch_assoc();
                                 <input class="col-md-6 form-control" type="text" required name="sales_price" id="sales_price" value=<?php echo($row['sales_price'])?>><br>
                                 <div class="w-100 py-2"></div>
                             </div>
-                            <input type="submit" name='submit' class="form-control btn-primary" value="Submit">
+                            <input type="submit" name='edit' class="form-control btn-primary" value="Submit">
                         </div>
                     </form>
                 </div>
