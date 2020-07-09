@@ -12,6 +12,7 @@
     }elseif(isset($_POST['edit'])){
         $sql = "UPDATE `products` SET `product_name`='$name',`quantity`='$quantity',`cost_price`='$cost_price',`sales_price`='$sales_price',`category_id`='$category' WHERE `product_id`='".$_POST['id']."'";
     }
+    //echo $sql;
     $conn->query($sql);
     // header('Location: ../manageProducts.php');
 ?>

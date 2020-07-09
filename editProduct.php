@@ -26,11 +26,10 @@ $row = $res->fetch_assoc();
 
                         <div class="card-body">
                             
-                            <input type="text" required name="product_name" id="product_name" value=<?php echo($row['product_name'])?> class="form-control" placeholder="Product name"> <br>
+                            <input type="text" required name="name" id="product_name" value=<?php echo($row['product_name'])?> class="form-control" placeholder="Product name"> <br>
 
-                            
-                            <select required name="category_id" id="category_id" class="form-control">
-                                <option>category</option>
+                            <p>Category:</p>
+                            <select required name="category" id="category" class="form-control">
                                 <?php
                                 require('include/database.php');
                                 $sql2 = "SELECT * FROM `categories`";
@@ -54,6 +53,7 @@ $row = $res->fetch_assoc();
                                 <input class="col-md-6 form-control" type="text" required name="sales_price" id="sales_price" value=<?php echo($row['sales_price'])?>><br>
                                 <div class="w-100 py-2"></div>
                             </div>
+                            <input type="hidden" name="id" value="<?php echo($_GET['id']) ?>">
                             <input type="submit" name='edit' class="form-control btn-primary" value="Submit">
                         </div>
                     </form>
