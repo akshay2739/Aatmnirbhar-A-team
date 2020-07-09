@@ -23,21 +23,10 @@ if(!isset($_POST['update'])){
 <body>
     <?php include('include/header.php'); ?>
     <h2>Update</h2>
-    <form action="<?php $_SERVER['PHP_SELF']?>" method="POST" >
-        <input type="text" name="name" value="<?php echo $r['category_name'] ?>" >
+    <form action="include/addCategorie.inc.php" method="POST" >
+        <input type="text" name="categorie" value="<?php echo $r['category_name'] ?>" required>
+        <input type="hidden" name="id" value="<?php echo($_GET['id']) ?>">
         <input type="submit" value="Update" name="update"> 
     </form>
 </body>
 </html>
-
-<!-- *******HTML FOR INPUT FIELD IN UPDATE********* -->
-
-<?php
-if(isset($_POST['update'])){
-    $name=$_POST['name'];
-    $sql="update categories set category_name='$name' where category_id='$id' ";
-    echo $sql;
-    $result=$conn->query($sql);
-    header('location: categories.php');
-}
-?>

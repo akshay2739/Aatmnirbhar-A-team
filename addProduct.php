@@ -32,7 +32,7 @@ include('include/bootstrap.php');
 
                 <input type="text" required name="sales_price" id="sales_price" placeholder="Selling Price" class="form-control mt-2 col-lg-6 col-sm-12">
 
-                <input type="submit" value="Add" name="submit" class="form-control mt-2 col-3 text-white bg-success">
+                <input type="submit" value="Add" name="add" class="form-control mt-2 col-3 text-white bg-success">
             </div>
         </div>
     </form>

@@ -2,6 +2,7 @@
 
     require_once('include/database.php');
     require_once('include/bootstrap.php');
+    require_once('include/sessionCheck.php')
     
 ?>
 <link href="style.css" rel="stylesheet" type="Text/css">

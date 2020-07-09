@@ -22,7 +22,7 @@ include('include/sessionCheck.php');
     <p>WARNING: DELETING CATEGORY WILL ALSO PRODUCTS IN IT</p>
     <form action="<?php $_SERVER['PHP_SELF']?>" method="post">
         <label for="name">Enter name of category:</label>
-        <input type="text" name="name" id="name">
+        <input type="text" name="name" id="name" required>
         <input type="submit" value="YES I WANT TO DELETE" name='delete'>
     </form>
 </body>
