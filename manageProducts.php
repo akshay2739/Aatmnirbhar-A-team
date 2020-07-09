@@ -1,7 +1,13 @@
 <?php
-
+require('include/sessionCheck.php');
 require('include/database.php');
-$res =$conn->query("SELECT * FROM `products` INNER JOIN `categories` ON products.category_id=categories.category_id");
+include('include/sessionCheck.php');
+if(isset($_GET['id'])){
+    $sql = "SELECT * FROM `products` INNER JOIN `categories` ON products.category_id=categories.category_id WHERE products.category_id='".$_GET['id']."'";
+}else{
+    $sql = "SELECT * FROM `products` INNER JOIN `categories` ON products.category_id=categories.category_id";
+}
+$res =$conn->query($sql);
 ?>
 
 <!DOCTYPE html>

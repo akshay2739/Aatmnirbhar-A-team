@@ -8,8 +8,8 @@
 <body>
 
 <?php
-    session_start();
     require('include/database.php');
+    include('include/sessionCheck.php');
     if(isset($_POST["confirm"])){
         $productsToAdd=$_SESSION['cart'];
         $total_amount=$_POST["total"];

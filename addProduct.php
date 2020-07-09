@@ -1,20 +1,26 @@
 <?php
 require('include/database.php');
+include('include/sessionCheck.php');
+include('include/bootstrap.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Add product</title>
 </head>
 <body>
+<<<<<<< HEAD
 
     <div>
         <?php 
             include_once('include/sidebar.php')
         ?>
     </div>
+=======
+    <?php include('sideNav.html'); ?>
+>>>>>>> 035dff8ae980618a998e20a8e143daf5ed0849e6
     <form action="<?php $_SERVER['PHP_SELF']?>" method="post">
         <label for="name">Name</label>
         <input type="text" name="name" required id="name"> <br>

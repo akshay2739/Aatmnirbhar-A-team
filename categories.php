@@ -1,11 +1,12 @@
 <?php
-
 require_once('include/database.php');
 require_once('include/bootstrap.php');
-session_start();
+include('include/sessionCheck.php');
 if(isset($_SESSION['id'])){
     unset($_SESSION['id']);
 }
+$sql = "SELECT * FROM `categories` ORDER BY `category_id`";
+$res = $conn -> query($sql);
 
 ?>
 
@@ -18,64 +19,39 @@ if(isset($_SESSION['id'])){
     <title>Document</title>
 </head>
 <body>
+<<<<<<< HEAD
     <div>
         <?php 
             include_once('include/sidebar.php')
         ?>
     </div>
     <form action="categories.php" method="POST">
+=======
+    <?php include('sideNav.html'); ?>    
+    
+    <form action="include/addCategorie.inc.php" method="POST">
+>>>>>>> 035dff8ae980618a998e20a8e143daf5ed0849e6
         <input type="text" name="categorie">
         <input type="submit" name="add" value="Add Categorie">
     </form>
-</form>
+
+    <table>
+        <tr>
+            <th>Category ID</th>
+            <th>Category Name</th>    
+            <th>Actions</th>
+        </tr>
+        <?php while(($r = $res->fetch_assoc())){ ?>
+            <tr>
+                <td><?php echo $r['category_id'] ?></td>
+                <td><?php echo $r['category_name']?></td>
+                <td> <a href='edit_category.php?id=<?php echo $r['category_id']; ?>'> Edit </a>
+                <a href='delete_category.php?id=<?php echo $r['category_id']; ?>'> Delete </a>
+                <td> <a href='manageProducts.php?id=<?php echo $r['category_id']; ?>'> View Products </a></td>
+            </tr>
+        <?php } ?> 
+    </table>
 </body>
 </html>
-
-<!-- ******************HTML FOR INPUT FIELD*********************** -->
-
-
-
-<!-- HTML FOR DISPLAY CATEGORIES -->
-
-<table>
-<?php
-    $index=1;
-
-    $sql="select * from categories order by category_id";
-    $result=$conn->query($sql);
-    while(($r = $result->fetch_assoc()) != null)
-    {
-?>
-        <tr>
-            <td><?php echo $index;$index++; ?></td>
-            <td><?php echo $r['category_name']?></td>
-            <td> <a href='edit_category.php ? id=<?php echo $r['category_id']; ?>'> Edit </a>
-            <td> <a href='delete_category.php ? id=<?php echo $r['category_id']; ?>'> Delete </a>
-
-
-        
-        </tr>
-        
-<?php
-    }
-    $id=$r['category_id'];
-
-?>
-</table>
-
-<!-- PHP FOR INSERT CATEGOIE IN DATABASE -->
-
-<?php
-
-if(isset($_POST['add'])){
-    $categorie=$_POST['categorie'];
-    $sql="insert into categories (category_name) values('$categorie')";
-    $result=$conn->query($sql);
-    header('location:categories.php');
-    
-}
-
-?>
-
 
 
