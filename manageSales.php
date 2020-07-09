@@ -10,7 +10,7 @@
    
 
     if(isset($_SESSION['id'])){
-        echo '<script>alert("Status Updated");</script>';
+        // echo '<script>alert("Status Updated");</script>';
 
         unset($_SESSION['id']);
     }

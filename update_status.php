@@ -20,8 +20,10 @@
     <input type="radio" name="status" value="PENDING"> Pending<br>
     <input type="radio" name="status" value="PACKED"> Packed<br>
     <input type="radio" name="status" value="SHIPPED"> Shipped<br>
+    <input type="radio" name="status" value="DELIVERED"> Delivered<br>
+
     <input type="submit" name="update" value="Update Status">
-    <input type="hidden" name="id" value="<?php echo($_GET['id']) ?>">
+    <input type="hidden" name="id" value="<?php echo($_GET['id']); ?>">
 
 </form>
 

@@ -55,27 +55,39 @@
                 <div class="card">
                     <div class="card-header">Recently added Prducts</div>
                     <div class="card-body">
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th>Price ₹</th>
                         <?php
-
+                            $index=0;
                             $sql= "select * from products order by product_id desc limit 5";
                             $result=$conn->query($sql);
                             while($r=$result->fetch_assoc()){
                                 $category_id=$r['category_id'];
                                 $sql1="select * from categories where category_id='$category_id'";
                                 $result1=$conn->query($sql1);
+                                
                                 while($r1=$result1->fetch_assoc()){
                                     $category=$r1['category_name'];
                                 }
+                                $index++;
                         ?>
-                            <a class="row" href="editProduct.php?id=<?php echo $r['product_id'];?>">
-                                <p>
-                                    <?php echo "name:- ".$r['product_name']?>
-                                </p>
-                            </a>
+                            <tr>
+                                <td><?php echo $index; ?></td>
+                                <td><?php echo $r['product_name']; ?></td>
+                                <td><?php echo $category; ?></td>
+                                <td> <?php echo $r['sales_price']; ?></td>
+                            </tr>
+                            
 
                             <?php        
                                 }
                             ?>
+
+                            </table>
                     </div>
                 </div>
                 
@@ -125,22 +137,24 @@
             </div>
             <div class="col-lg-4 col-sm-12 text-center">
                 <div class="card">
-                    <div class="card-header">Highest Salling products</div>
+                    <div class="card-header">Highest Selling products</div>
                     <div class="card-body">
                         <div class="table-responsive">
                                     
                             <table class="table table-bordered">
                                 <tr>
-                                    <td>Product Name</td>
-                                    <td>Total Sold</td>
-                                    <td>Total Quantity</td>
+                                    <th>#</th>
+                                    <th>Product Name</th>
+                                    <th>Total Sold</th>
+                                    <th>Total Quantity</th>
                                 </tr>
 
                                 <?php
-
+                                    $index=0;
                                     $sql="select * , COUNT(*) FROM sales group by p_name order by COUNT(*) desc limit 3";
                                     $result=$conn->query($sql);
                                     while($r=$result->fetch_assoc()){
+                                        $index++;
                                         $name=$r['p_name'];
                                         $sql1="select * from products where product_name='$name'";
                                         $result1=$conn->query($sql1);
@@ -149,8 +163,9 @@
                                             $qty+=$r1['quantity'];
                                         }
                                 ?>
-
+                                
                                 <tr>
+                                    <td><?php echo $index;  ?></td>
                                     <td><?php echo $r['p_name'];  ?></td>
                                     <td><?php echo $r['COUNT(*)'];  ?></td>
                                     <td><?php echo $qty;  ?></td>
