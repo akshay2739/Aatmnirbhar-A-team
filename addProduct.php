@@ -12,8 +12,7 @@ include('include/bootstrap.php');
 </head>
 <body>
     <?php include_once('include/header.php') ?>
-
-    <form action="<?php $_SERVER['PHP_SELF']?>" method="post">
+    <form action="include/addProduct.inc.php" method="post">
         <div class="container">
             <div class="row p-2">
                 <input type="text" name="name" required id="name" class="form-control col-lg-12 mt-2 col-sm-12" placeholder="Product name">
@@ -29,7 +28,7 @@ include('include/bootstrap.php');
                     }
                 ?></select> 
 
-                <input type="text" required name="cost_price" id="cost_price" placeholder="Price" class="form-control mt-2 col-lg-6 col-sm-12">
+                <input type="text" required name="cost_price" id="cost_price" placeholder="Buying Price" class="form-control mt-2 col-lg-6 col-sm-12">
 
                 <input type="text" required name="sales_price" id="sales_price" placeholder="Selling Price" class="form-control mt-2 col-lg-6 col-sm-12">
 
@@ -39,17 +38,3 @@ include('include/bootstrap.php');
     </form>
 </body>
 </html>
-
-<?php
-if(isset($_POST['submit'])){
-    $name = $_POST['name'];
-    $quantity = $_POST['quantity'];
-    $cost_price = $_POST['cost_price'];
-    $category = $_POST['category'];
-    $sales_price = $_POST['sales_price'];
-
-    $sql = "INSERT INTO `products`(`product_name`, `quantity`, `cost_price`, `sales_price`, `category_id`) VALUES ('$name','$quantity','$cost_price','$sales_price','$category')";
-    $conn->query($sql);
-    header('Location: manageProducts.php');
-}
-?>
