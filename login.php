@@ -11,6 +11,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+ <style>   
+    /* @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap'); */
+    *{
+    /* font-family: 'Bebas neue', sans-serif; */
+    letter-spacing:.05rem
+    }
+</style>
 </head>
 <body class="bg-light" style="height:100vh">
     <div class="h-100 d-flex justify-content-center align-items-center">

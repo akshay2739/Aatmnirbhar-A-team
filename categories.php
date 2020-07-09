@@ -24,7 +24,7 @@ $res = $conn -> query($sql);
         <div class="row">
             <div class="col-lg-3 col-sm-12 pt-5">
                 <div class="card">
-                    <div class="card-header w-100">
+                    <div class="card-header">
                         Add Category
                     </div>
                     <div class="card-body">
@@ -33,10 +33,9 @@ $res = $conn -> query($sql);
                             <input type="submit" class="form-control bg-primary text-white mt-2" name="add" value="Add Categorie">
                         </form>
                     </div>
-                </div>
-            
-            
+                </div>            
             </div>
+
             <div class="col-lg-9 col-sm-12  pt-5">
                 <div class="card">
                     <div class="card-header">
