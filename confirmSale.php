@@ -27,4 +27,38 @@
             echo json_encode($response);
         }
     }
+    else if(isset($_GET["getProducts"])){
+        $cid=$_GET['category_id'];
+        $res =$conn->query("SELECT * FROM `products` WHERE category_id=$cid");
+        if($res){
+            if(mysqli_num_rows($res)>0){
+                echo "<select name='prods' id='prods' onchange='getProductDetails(this.value)'>";
+                echo "<option selected disabled>Select Product</option>";
+                while($product = $res->fetch_assoc()){
+                    echo '<option value="'.$product["product_id"].'">'.$product["product_name"].'</option>';
+                }
+                echo "</select>";
+            }
+            else{
+                echo "No Products in this category";
+            }
+        }
+    }
+    else if(isset($_GET["getProductDetail"])){
+        $id = $_GET["product_id"];
+        $res =$conn->query("SELECT * FROM `products` WHERE product_id=$id");
+        if($res){
+            if(mysqli_num_rows($res)>0){
+                $prod = $res->fetch_assoc();
+                echo "Current Stock: ".$prod['quantity']."<br>";
+                echo "<p>Sales Price: <span id='price'>".$prod['sales_price']."</span><p>";
+                echo '<label for="quantity">Enter Quantity</label>';
+                echo '<input type="number" class="form-control" id="quantity" name="quantity" value="1" min="1" required onkeyup="displayTotal(this.value)">';
+                echo '<input type="button" id="'.$prod["product_id"].'" class="btn btn-primary" value="Add" name="add" onclick="confirmSale('.$prod["product_id"].')">';
+            }
+            else{
+                echo "";
+            }
+        }
+    }
 ?>
