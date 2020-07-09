@@ -15,29 +15,47 @@ $res =$conn->query("SELECT * FROM `products` INNER JOIN `categories` ON products
 </head>
 <body>
     <?php include_once('include/header.php') ?>
-    <table>
-            <tr>
-                <th>Name</th>
-                <th>Category</th>
-                <th>Stock</th>
-                <th>Sales Price</th>
-                <th>Quantity to add</th>
-                <th>Action</th>
-            </tr>
-            <?php
-                while($row = $res->fetch_assoc()): ?>
-                    <tr>
-                        <input type="hidden" name="id" id="<?php echo $row['product_id']."id"; ?>" value="<?php echo $row['product_id']; ?>">
-                        <td><?php echo $row['product_name'] ?></td>
-                        <td><?php echo $row['category_name'] ?></td>
-                        <td><?php echo $row['quantity'] ?></td>
-                        <td><?php echo $row['sales_price'] ?></td>
-                        <td><input type="number" id="<?php echo $row['product_id'].'quantity'; ?>" name="quantity" value="1" min="1" required></td>
-                        <td><input type="button" id="<?php echo $row['product_id']; ?>" value="Add" name="add" onclick="confirmSale(this.id)"></td>
-                    </tr>
-            <?php endwhile; ?>
-        
-        </table>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h1 class="text-center text-uppercase">add sales</h1>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-center text-center">
+                            
+                            <tr class=" ">
+                                <th class="">Name</th>
+                                <th class="">Category</th>
+                                <th class="">Stock</th>
+                                <th class="">Sales Price</th>
+                                <th class="">Quantity</th>
+                                <th class="">Action</th>
+                            </tr>
+                            <!-- <hr class="m-0 p-0"> -->
+                            <?php
+                                while($row = $res->fetch_assoc()): ?>
+                                    <tr class="">
+                                        <input type="hidden" name="id" id="<?php echo $row['product_id']."id"; ?>" value="<?php echo $row['product_id']; ?>">
+                                        <td class=""><?php echo $row['product_name'] ?></td>
+                                        <td class=""><?php echo $row['category_name'] ?></td>
+                                        <td class=""><?php echo $row['quantity'] ?></td>
+                                        <td class=""><?php echo $row['sales_price'] ?></td>
+                                        <td class=""><input type="number" class="form-control" id="<?php echo $row['product_id'].'quantity'; ?>" name="quantity" value="1" min="1" required></td>
+                                        <td class=""><input type="button" id="<?php echo $row['product_id']; ?>" class="btn btn-primary" value="Add" name="add" onclick="confirmSale(this.id)"></td>
+                                    </tr>
+                            <?php endwhile; ?>
+                        
+                            
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
         <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
     <script>
         function confirmSale(id){
