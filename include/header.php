@@ -32,6 +32,16 @@
           <a class="dropdown-item" href="manageProducts.php">Manage Product</a>
         </div>
       </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Sales
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="addSales.php">Add Sales</a>
+          <a class="dropdown-item" href="manageSales.php">Manage Sales</a>
+        </div>
+      </li>
+      
     </ul>
   </div>
 </nav>
