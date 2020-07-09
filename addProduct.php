@@ -11,16 +11,7 @@ include('include/bootstrap.php');
     <title>Add product</title>
 </head>
 <body>
-<<<<<<< HEAD
-
-    <div>
-        <?php 
-            include_once('include/sidebar.php')
-        ?>
-    </div>
-=======
-    <?php include('sideNav.html'); ?>
->>>>>>> 035dff8ae980618a998e20a8e143daf5ed0849e6
+    <?php include_once('include/sideNav.html'); ?>
     <form action="<?php $_SERVER['PHP_SELF']?>" method="post">
         <label for="name">Name</label>
         <input type="text" name="name" required id="name"> <br>

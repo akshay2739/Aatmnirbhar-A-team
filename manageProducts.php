@@ -2,6 +2,7 @@
 require('include/sessionCheck.php');
 require('include/database.php');
 include('include/sessionCheck.php');
+include('include/bootstrap.php');
 if(isset($_GET['id'])){
     $sql = "SELECT * FROM `products` INNER JOIN `categories` ON products.category_id=categories.category_id WHERE products.category_id='".$_GET['id']."'";
 }else{
@@ -19,11 +20,7 @@ $res =$conn->query($sql);
 </head>
 <body>
 
-    <div>
-        <?php 
-            include_once('include/sidebar.php')
-        ?>
-    </div>
+    <?php include_once('include/sideNav.html'); ?>
 
     <a href="addProduct.php">Add Product</a>
     <table>
