@@ -21,7 +21,7 @@ $row = $res->fetch_assoc();
         <div class="row justify-content-center">
             <div class="col-md-5">
                 <div class="card">
-                    <form action="<?php $_SERVER['PHP_SELF']?>" method="post">
+                    <form action="include/addProduct.inc.php" method="post">
                         <div class="card-header"><h1 class="text-uppercase text-center">Edit product</h1></div>
 
                         <div class="card-body">
@@ -63,15 +63,3 @@ $row = $res->fetch_assoc();
     </div>
 </body>
 </html>
-
-<?php
-if(isset($_POST['submit'])){
-    $name = $_POST['product_name'];
-    $category_id = $_POST['category_id'];
-    $quantity = $_POST['quantity'];
-    $cost_price = $_POST['cost_price'];
-    $sales_price = $_POST['sales_price'];
-    $sql = "UPDATE `products` SET `product_name`='$name',`quantity`='$quantity',`cost_price`='$cost_price',`sales_price`='$sales_price',`category_id`='$category_id' WHERE `product_id`='$pid'";
-    $conn->query($sql);
-}
-?>

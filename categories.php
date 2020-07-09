@@ -29,7 +29,7 @@ $res = $conn -> query($sql);
                     </div>
                     <div class="card-body">
                         <form action="include/addCategorie.inc.php" class="form-group" method="POST">
-                            <input type="text" class="form-control" name="categorie">
+                            <input type="text" class="form-control" name="categorie" required>
                             <input type="submit" class="form-control bg-primary text-white mt-2" name="add" value="Add Categorie">
                         </form>
                     </div>
@@ -43,7 +43,7 @@ $res = $conn -> query($sql);
                     </div>
                     <div class="card-body">
                         <div class="table-responsive-sm">
-                            <table class="table table-sm table-bordered">
+                            <table class="table text-center table-sm table-bordered">
                                 <tr>
                                     <th>ID</th>
                                     <th>Name</th>    
@@ -61,7 +61,7 @@ $res = $conn -> query($sql);
                                         </td>
                                             
                                         <td>
-                                            <a class="   btn btn-sm bg-success text-white" href='manageProducts.php?id=<?php echo $r['category_id']; ?>'>View</a>
+                                            <a class="   btn btn-sm bg-success text-white" href='manageProducts.php?id=<?php echo $r['category_id']; ?>'>View Products</a>
                                         </td>
                                         
                                     </tr>

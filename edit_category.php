@@ -31,8 +31,13 @@ if(!isset($_POST['update'])){
                         <h2 class="text-uppercase font-weight-bold text-center">Update</h2>
                     </div>
                     <div class="card-body">
-                        <form action="<?php $_SERVER['PHP_SELF']?>" method="POST" >
-                            <input type="text" class="form-control my-2" name="name" value="<?php echo $r['category_name'] ?>" >
+                        <form action="include/addCategorie.inc.php" method="POST" >
+                        <!-- <form action="<?php $_SERVER['PHP_SELF']?>" method="POST" > -->
+                            <!-- <input type="text" class="form-control my-2" name="name" value="<?php echo $r['category_name'] ?>" >
+                            <input type="submit" class="form-control my-2 btn-primary" value="Update" name="update">  -->
+                            <!-- </form> -->
+                            <input type="text" class="form-control my-2" name="categorie" value="<?php echo $r['category_name'] ?>" required>
+                            <input type="hidden" name="id" value="<?php echo($_GET['id']) ?>">
                             <input type="submit" class="form-control my-2 btn-primary" value="Update" name="update"> 
                         </form>
                     </div>
@@ -40,17 +45,6 @@ if(!isset($_POST['update'])){
             </div>
         </div>
     </div>
+    
 </body>
 </html>
-
-<!-- *******HTML FOR INPUT FIELD IN UPDATE********* -->
-
-<?php
-if(isset($_POST['update'])){
-    $name=$_POST['name'];
-    $sql="update categories set category_name='$name' where category_id='$id' ";
-    echo $sql;
-    $result=$conn->query($sql);
-    header('location: categories.php');
-}
-?>
