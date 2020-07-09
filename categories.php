@@ -19,7 +19,7 @@ $res = $conn -> query($sql);
     <title>Document</title>
 </head>
 <body>
-    <?php include_once('include/sideNav.html') ?>
+    <?php include_once('include/header.php') ?>
     <form action="include/addCategorie.inc.php" method="POST">
         <input type="text" name="categorie">
         <input type="submit" name="add" value="Add Categorie">
