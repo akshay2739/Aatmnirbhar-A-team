@@ -10,7 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
-        <?php include('include/sideNav.html'); ?>
+        <?php include('include/header.php'); ?>
     </body>
 </html> 
 
