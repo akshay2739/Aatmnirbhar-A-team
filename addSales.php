@@ -2,7 +2,8 @@
 require('include/database.php');
 include('include/sessionCheck.php');
 session_start();
-$res =$conn->query("SELECT * FROM `products` INNER JOIN `categories` ON products.category_id=categories.category_id ORDER BY product_name");
+// $res =$conn->query("SELECT * FROM `products` INNER JOIN `categories` ON products.category_id=categories.category_id ORDER BY product_name");
+$res =$conn->query("SELECT * FROM `categories`");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +15,7 @@ $res =$conn->query("SELECT * FROM `products` INNER JOIN `categories` ON products
 
 </head>
 <body>
-    <?php include_once('include/header.php') ?>
+    <?php include_once('include/header.php'); ?>
 
     <div class="container">
         <div class="row justify-content-center">
@@ -23,34 +24,17 @@ $res =$conn->query("SELECT * FROM `products` INNER JOIN `categories` ON products
                     <div class="card-header">
                         <h1 class="text-center text-uppercase">add sales</h1>
                     </div>
-                    <div class="table-responsive">
-                        <table class="table table-center text-center">
-                            
-                            <tr class=" ">
-                                <th class="">Name</th>
-                                <th class="">Category</th>
-                                <th class="">Stock</th>
-                                <th class="">Sales Price</th>
-                                <th class="">Quantity</th>
-                                <th class="">Action</th>
-                            </tr>
-                            <!-- <hr class="m-0 p-0"> -->
-                            <?php
-                                while($row = $res->fetch_assoc()): ?>
-                                    <tr class="">
-                                        <input type="hidden" name="id" id="<?php echo $row['product_id']."id"; ?>" value="<?php echo $row['product_id']; ?>">
-                                        <td class=""><?php echo $row['product_name'] ?></td>
-                                        <td class=""><?php echo $row['category_name'] ?></td>
-                                        <td class=""><?php echo $row['quantity'] ?></td>
-                                        <td class=""><?php echo $row['sales_price'] ?></td>
-                                        <td class=""><input type="number" class="form-control" id="<?php echo $row['product_id'].'quantity'; ?>" name="quantity" value="1" min="1" required></td>
-                                        <td class=""><input type="button" id="<?php echo $row['product_id']; ?>" class="btn btn-primary" value="Add" name="add" onclick="confirmSale(this.id)"></td>
-                                    </tr>
-                            <?php endwhile; ?>
-                        
-                            
-                        </table>
+                    <select name="categories" id="categories" onchange="getProducts(this.value)">
+                    <option selected disabled>Select Category</option>
+                    <?php while($category = $res->fetch_assoc()): ?>
+                        <option value="<?php echo $category['category_id']; ?>"><?php echo $category['category_name']; ?></option>
+                    <?php endwhile; ?>
+                    </select>
+                    <div id="products">
                     </div>
+                    <div id="productDetail">
+                    </div>
+                     <p>Total: <span id="total"></span></p>
                 </div>
             </div>
         </div>
@@ -58,9 +42,45 @@ $res =$conn->query("SELECT * FROM `products` INNER JOIN `categories` ON products
     
         <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
     <script>
+        function getProducts(category_id){
+            $.ajax({
+                type:"GET",
+                url: "confirmSale.php",
+                data:{
+                    "getProducts":1,
+                    "category_id":category_id,
+                },
+                success:function(data){
+                    document.getElementById("products").innerHTML=data;
+                }
+            });
+        }
+        function getProductDetails(pid){
+            $.ajax({
+                type:"GET",
+                url: "confirmSale.php",
+                data:{
+                    "getProductDetail":1,
+                    "product_id":pid,
+                },
+                success:function(data){
+                    document.getElementById("productDetail").innerHTML=data;
+                    displayTotal(1);
+                }
+            });
+        }
+        function displayTotal(quant){
+            price =document.getElementById("price").innerHTML;
+            if(quant>0)
+                document.getElementById("total").innerHTML=price*parseFloat(quant);
+            else{
+                document.getElementById("total").innerHTML="";
+            }
+            
+
+        }
         function confirmSale(id){
-            var id = document.getElementById(id+"id").value;
-            var quantity = document.getElementById(id+"quantity").value;
+            var quantity = document.getElementById("quantity").value;
             $.ajax({
             type: 'POST',
             url: 'confirmSale.php',
@@ -86,8 +106,6 @@ $res =$conn->query("SELECT * FROM `products` INNER JOIN `categories` ON products
                         title: "Oops",
                         text: response["msg"],
                         icon: "warning",
-                    }).then((value) => {
-                        location.reload();
                     });
                 }
                 
