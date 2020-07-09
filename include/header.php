@@ -39,6 +39,7 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" href="addSales.php">Add Sales</a>
           <a class="dropdown-item" href="manageSales.php">Manage Sales</a>
+          <a class="dropdown-item" href="salesReport.php">Sales Report</a>
         </div>
       </li>
       
