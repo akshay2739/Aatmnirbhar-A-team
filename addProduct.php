@@ -12,7 +12,7 @@ include('include/bootstrap.php');
 </head>
 <body>
     <?php include_once('include/header.php') ?>
-    <form action="<?php $_SERVER['PHP_SELF']?>" method="post">
+    <form action="include/addProduct.inc.php" method="post">
         <label for="name">Name</label>
         <input type="text" name="name" required id="name"> <br>
 
@@ -39,17 +39,3 @@ include('include/bootstrap.php');
     </form>
 </body>
 </html>
-
-<?php
-if(isset($_POST['submit'])){
-    $name = $_POST['name'];
-    $quantity = $_POST['quantity'];
-    $cost_price = $_POST['cost_price'];
-    $category = $_POST['category'];
-    $sales_price = $_POST['sales_price'];
-
-    $sql = "INSERT INTO `products`(`product_name`, `quantity`, `cost_price`, `sales_price`, `category_id`) VALUES ('$name','$quantity','$cost_price','$sales_price','$category')";
-    $conn->query($sql);
-    header('Location: manageProducts.php');
-}
-?>
