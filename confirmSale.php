@@ -32,7 +32,7 @@
         $res =$conn->query("SELECT * FROM `products` WHERE category_id=$cid");
         if($res){
             if(mysqli_num_rows($res)>0){
-                echo "<select name='prods' id='prods' onchange='getProductDetails(this.value)'>";
+                echo "<select name='prods' id='prods' class='form-control my-3' onchange='getProductDetails(this.value)'>";
                 echo "<option selected disabled>Select Product</option>";
                 while($product = $res->fetch_assoc()){
                     echo '<option value="'.$product["product_id"].'">'.$product["product_name"].'</option>';
@@ -50,11 +50,13 @@
         if($res){
             if(mysqli_num_rows($res)>0){
                 $prod = $res->fetch_assoc();
-                echo "Current Stock: ".$prod['quantity']."<br>";
-                echo "<p>Sales Price: <span id='price'>".$prod['sales_price']."</span><p>";
-                echo '<label for="quantity">Enter Quantity</label>';
-                echo '<input type="number" class="form-control" id="quantity" name="quantity" value="1" min="1" required onkeyup="displayTotal(this.value)">';
-                echo '<input type="button" id="'.$prod["product_id"].'" class="btn btn-primary" value="Add" name="add" onclick="confirmSale('.$prod["product_id"].')">';
+                echo "<div class='row my-3'>";
+                echo "<p class='col-12 pt-2 m-0 text-uppercase'>Current Stock: ".$prod['quantity']."</p>";
+                echo "<p class='col-12 pt-2 m-0 text-uppercase'>Sales Price: <span id='price'>".$prod['sales_price']."</span><p>";
+                echo "</div>";
+                // echo '<label for="quantity">Enter Quantity</label>';
+                echo '<input type="number" class="form-control my-3" id="quantity" name="quantity" min="1" placeholder="Enter Quantity" required onkeyup="displayTotal(this.value)">';
+                echo '<input type="button" id="'.$prod["product_id"].'" class="btn btn-primary form-control" value="Add" name="add" onclick="confirmSale('.$prod["product_id"].')">';
             }
             else{
                 echo "";
