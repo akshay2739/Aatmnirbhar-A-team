@@ -59,11 +59,12 @@ include('include/sessionCheck.php');
                     </div>
                 </div>
             </div>
+            <div class="w-100"></div>
+            <div id="content"></div>
+
         </div>
     </div>
         
-    </form>
-    <div id="content"></div>
     <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
     <script>
     function openNext(){
@@ -73,10 +74,10 @@ include('include/sessionCheck.php');
         if (document.getElementById('recent').checked) {
         document.getElementById('fixed').style.display = 'block';
         document.getElementById('customs').style.display = 'none';
-    } else {
-        document.getElementById('fixed').style.display = 'none';
-        document.getElementById('customs').style.display = 'block';
-    }
+        } else {
+            document.getElementById('fixed').style.display = 'none';
+            document.getElementById('customs').style.display = 'block';
+        }
     }
         function getReport(val){
             if (document.getElementById('recent').checked) {

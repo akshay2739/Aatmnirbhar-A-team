@@ -30,10 +30,10 @@
                 <input type="submit" name="login" class="form-control mt-2 bg-success text-white" value="login">
                 
 
-                <div class="d-flex mt-2 small d-flex justify-content-center align-items-center">
+                <!-- <div class="d-flex mt-2 small d-flex justify-content-center align-items-center">
                     <p class="my-auto small ">Not registered?</p>
                     <a class="ml-1 text-success font-weight-bold "href="signup.php">Create an Account</a>
-                </div></p>
+                </div> -->
                 
 
             </form>

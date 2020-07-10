@@ -48,7 +48,9 @@
           <a href="salesReport.php" class="dropdown-item">Sales Report</a>
         </div>
       </li>
-      
+      <li class="nav-item px-3">
+        <a class="nav-link" href="../logout.php">Logout</a>
+      </li>
     </ul>
   </div>
 </nav>
