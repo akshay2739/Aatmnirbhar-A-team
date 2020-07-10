@@ -2,6 +2,10 @@
 
     require_once('include/database.php');
     include('include/bootstrap.php');
+    session_start();
+    if(isset($_SESSION['user'])){
+        header("location:index.php");
+    }
 
 ?>
 
@@ -57,7 +61,7 @@
         $result=$conn->query($sql);
         if(mysqli_num_rows($result)>0)
         {
-            session_start();
+            // session_start();
             $_SESSION['user']=$username;
             header("location: index.php"); 
         }

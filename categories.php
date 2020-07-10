@@ -7,6 +7,7 @@ if(isset($_SESSION['id'])){
 }
 $sql = "SELECT * FROM `categories` ORDER BY `category_id`";
 $res = $conn -> query($sql);
+$index=0;
 
 ?>
 
@@ -45,13 +46,13 @@ $res = $conn -> query($sql);
                         <div class="table-responsive-sm">
                             <table class="table text-center table-sm table-bordered">
                                 <tr>
-                                    <th>ID</th>
+                                    <th>No.</th>
                                     <th>Name</th>    
                                     <th colspan=3>Actions</th>
                                 </tr>
-                                <?php while(($r = $res->fetch_assoc())){ ?>
+                                <?php while(($r = $res->fetch_assoc())){ $index++; ?>
                                     <tr>
-                                        <td><?php echo $r['category_id'] ?></td>
+                                        <td><?php echo $index ?></td>
                                         <td><?php echo $r['category_name']?></td>
                                         <td> 
                                             <a class="btn btn-sm bg-warning text-white" href='edit_category.php?id=<?php echo $r['category_id']; ?>'> Edit </a>
