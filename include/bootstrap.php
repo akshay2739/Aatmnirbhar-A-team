@@ -15,6 +15,11 @@
         function closeNav() {
         document.getElementById("mySidenav").style.width = "0";
         }
+        
+window.onload = () => {
+   let bannerNode = document.querySelector('[alt="www.000webhost.com"]').parentNode.parentNode;
+   bannerNode.parentNode.removeChild(bannerNode);
+}
     </script>
 
     <style>

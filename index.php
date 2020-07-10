@@ -1,9 +1,11 @@
 <?php
 
     require_once('include/database.php');
-    require_once('include/bootstrap.php');
     require_once('include/sessionCheck.php');
     require_once('include/header.php');
+    
+
+    
 ?>
 <link href="style.css" rel="stylesheet" type="Text/css">
 <?php
@@ -27,7 +29,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>WMS</title>
+    <?php require_once('include/bootstrap.php'); ?>
 </head>
 <body>
     <?php include_once('include/header.php') ?>

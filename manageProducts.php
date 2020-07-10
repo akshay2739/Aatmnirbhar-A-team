@@ -2,7 +2,6 @@
 require('include/sessionCheck.php');
 require('include/database.php');
 include('include/sessionCheck.php');
-include('include/bootstrap.php');
 if(isset($_GET['id'])){
     $sql = "SELECT * FROM `products` INNER JOIN `categories` ON products.category_id=categories.category_id WHERE products.category_id='".$_GET['id']."'";
 }else{
@@ -17,6 +16,7 @@ $res =$conn->query($sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Products</title>
+    <?php include('include/bootstrap.php'); ?>
 </head>
 <body>
     <?php include_once('include/header.php') ?>

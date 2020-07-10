@@ -1,6 +1,5 @@
 <?php
 require_once('include/database.php');
-require_once('include/bootstrap.php');
 include('include/sessionCheck.php');
 if(isset($_SESSION['id'])){
     unset($_SESSION['id']);
@@ -16,7 +15,8 @@ $res = $conn -> query($sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Product Categories</title>
+    <?php include('include/bootstrap.php'); ?>
 </head>
 <body>
     <?php include_once('include/header.php') ?>
