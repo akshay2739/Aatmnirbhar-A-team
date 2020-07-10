@@ -56,7 +56,10 @@
         $total=0.0;
         if($res){
             if(mysqli_num_rows($res)>0){
-            echo "<table>";
+            echo "<div class='card mt-5'>";
+            echo "<div class='card-header'><h1 class='text-uppercase text-center'>Report</div>";
+            echo "<div class='table-responsive'>";
+            echo "<table class='table text-center'>";
             echo "<tr>";
             echo "<th>Id</th>";
             echo "<th>Product Name</th>";
@@ -66,6 +69,7 @@
             echo "<th>Date</th>";
             echo "<th>Status</th>";
             echo "</tr>";
+            $total=0;
             while($sales = $res->fetch_assoc()){
                 $total+=floatval($sales["price"]);
                 echo "<tr>";
@@ -78,8 +82,9 @@
                     echo "<td>".$sales['status']."</td>";
                 echo "</tr>";
             }
-            echo "<tr><th>Total Revenue:</th><td>$total<td></tr>";
-            echo "</table>";
+            // echo "<tr><th>Total Revenue:</th><td>$total<td></tr>";
+            echo "</div>";
+            echo "</table></div></div>";
         }
         else{
             echo "No record found";
