@@ -12,6 +12,7 @@ $res =$conn->query("SELECT * FROM `categories`");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Sale</title>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <?php include('include/bootstrap.php'); ?>
 
 </head>
 <body>

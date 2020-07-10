@@ -2,7 +2,6 @@
 
 require_once('include/database.php');
 include('include/sessionCheck.php');
-include('include/bootstrap.php');
 $id = $_GET['id'];
 ?>
 <?php
@@ -19,6 +18,7 @@ if(!isset($_POST['update'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Category</title>
+    <?php include('include/bootstrap.php'); ?>
 </head>
 <body>
     <?php include('include/header.php'); ?>

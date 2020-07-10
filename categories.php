@@ -1,13 +1,11 @@
 <?php
 require_once('include/database.php');
-require_once('include/bootstrap.php');
 include('include/sessionCheck.php');
 if(isset($_SESSION['id'])){
     unset($_SESSION['id']);
 }
 $sql = "SELECT * FROM `categories` ORDER BY `category_id`";
 $res = $conn -> query($sql);
-$index=0;
 
 ?>
 
@@ -17,7 +15,8 @@ $index=0;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Product Categories</title>
+    <?php include('include/bootstrap.php'); ?>
 </head>
 <body>
     <?php include_once('include/header.php') ?>
@@ -46,13 +45,13 @@ $index=0;
                         <div class="table-responsive-sm">
                             <table class="table text-center table-sm table-bordered">
                                 <tr>
-                                    <th>No.</th>
+                                    <th>ID</th>
                                     <th>Name</th>    
                                     <th colspan=3>Actions</th>
                                 </tr>
-                                <?php while(($r = $res->fetch_assoc())){ $index++; ?>
+                                <?php while(($r = $res->fetch_assoc())){ ?>
                                     <tr>
-                                        <td><?php echo $index ?></td>
+                                        <td><?php echo $r['category_id'] ?></td>
                                         <td><?php echo $r['category_name']?></td>
                                         <td> 
                                             <a class="btn btn-sm bg-warning text-white" href='edit_category.php?id=<?php echo $r['category_id']; ?>'> Edit </a>
