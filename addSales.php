@@ -20,22 +20,28 @@ $res =$conn->query("SELECT * FROM `categories`");
 
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-12">
+            <div class="col-lg-5">
                 <div class="card">
                     <div class="card-header">
                         <h1 class="text-center text-uppercase">add sales</h1>
                     </div>
-                    <select name="categories" id="categories" onchange="getProducts(this.value)">
-                    <option selected disabled>Select Category</option>
-                    <?php while($category = $res->fetch_assoc()): ?>
-                        <option value="<?php echo $category['category_id']; ?>"><?php echo $category['category_name']; ?></option>
-                    <?php endwhile; ?>
-                    </select>
-                    <div id="products">
+                    <div class="card-body">
+                        <div class="row justify-content-center">
+                            <div class="col text-center">
+                                <select name="categories" class="form-control" id="categories" onchange="getProducts(this.value)">
+                                <option selected disabled>Select Category</option>
+                                <?php while($category = $res->fetch_assoc()): ?>
+                                    <option value="<?php echo $category['category_id']; ?>"><?php echo $category['category_name']; ?></option>
+                                <?php endwhile; ?>
+                                </select>
+                                <div id="products">
+                                </div>
+                                <div id="productDetail">
+                                </div>
+                                <p class="form-control my-3 font-weight-bold text-success">Total: <span id="total"></span></p>
+                            </div>
+                        </div>
                     </div>
-                    <div id="productDetail">
-                    </div>
-                     <p>Total: <span id="total"></span></p>
                 </div>
             </div>
         </div>
